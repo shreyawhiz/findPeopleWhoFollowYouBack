@@ -1,24 +1,56 @@
+// {
+//   "manifest_version": 2,
+
+//   "name": "my First Chrome extension",
+//   "description": "This extension shows a Google Image search result for the current page",
+//   "version": "1.0",
+
+//   // "browser_action": {
+//   //   "default_icon": "icon.png",
+//   //   "default_popup": "newpopup.html",
+//   //   "default_title": "Click here!"
+//   // },
+//   //  "browser_action": {
+//   //   "default_icon": "icon.png",
+//   //   "default_popup": "popup.html",
+//   //   "default_title": "Click here!"
+//   // },
+//   "permissions": [
+//     "activeTab",
+//     // "https://ajax.googleapis.com/",
+//     "https://www.github.com/",
+//     "https://api.github.com/"
+//   ],
+//   "content_scripts": [{
+//     "css": ["styles.css"],
+//     // "js": ["lodash.core.js","popup.js","newpopup.js"],
+//     "js": ["content.js","jquery.min.js"],
+//     "matches": ["https://github.com/*"]
+//   }]
+// }
 {
   "manifest_version": 2,
 
-  "name": "my First Chrome extension",
-  "description": "This extension shows a Google Image search result for the current page",
+  "name": "Github Followback",
   "version": "1.0",
+  "description": "Github Followback",
 
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "newpopup.html",
     "default_title": "Click here!"
   },
-  //  "browser_action": {
-  //   "default_icon": "icon.png",
-  //   "default_popup": "popup.html",
-  //   "default_title": "Click here!"
-  // },
   "permissions": [
     "activeTab",
-    // "https://ajax.googleapis.com/",
     "https://www.github.com/",
     "https://api.github.com/"
-  ]
+  ],
+
+  "content_scripts": [{
+    "css": ["styles.css"],
+    "js": ["jquery.min.js","content.js"],
+    // "js": ["jquery.min.js","newpopup.js"],
+    "matches": ["https://github.com/*"]
+  }]
+
 }

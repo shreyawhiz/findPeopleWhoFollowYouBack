@@ -40,16 +40,22 @@ document.addEventListener('DOMContentLoaded', function() {
 				    xmlHttp2.onreadystatechange = function() {
 				        if (xmlHttp2.readyState == 4 && xmlHttp2.status == 200){
 				        	var response = JSON.parse(xmlHttp2.responseText);
-				        	var common = [];
 				        	var following = response.map(function(obj){
-				        		if(followers.indexOf(obj.id)>-1){
-				        			common.push(obj.id);
-				        			return obj.id;
-				        		}else {
-				        			return obj.id;
+				        		return obj.id;
+				        	});
+				        	var followingUsernames = response.map(function(obj){
+				        		return obj.username;
+				        	});
+				        	// -------------
+				        	var listOfFollowingByDiv=$('.d-table.col-12.width-full.py-4.border-bottom.border-gray-light > .pr-3 > .mb-1');
+				        	listOfFollowingByDiv.each(function(idx){
+				        		var hrefValue = $(this).attr('href');
+				        		var currenUsername = hrefValue.substring(1);
+				        		if(followingUsernames.indexOf(currenUsername)>-1){
+				        			$(this).append('<span> [Follows You]</span>');
 				        		}
 				        	});
-				        	document.getElementById('result').innerHTML = following;
+				        	document.getElementById('result').innerHTML = "listOfFollowingByDiv";
 				        }
 				    }
 				    var theUrl = "https://api.github.com/users/" + username + "/following";
